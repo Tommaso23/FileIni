@@ -28,7 +28,7 @@ bool IniFile::addSection(string sName) {
 }
 
 bool IniFile::addParameter(string sName, string pName) {
-    file[sName][pName] = "empty";
+    file[sName][pName] = "vuoto";
     if(&(file[sName][pName]) != nullptr)
         return true;
     else
@@ -37,17 +37,38 @@ bool IniFile::addParameter(string sName, string pName) {
 }
 
 void IniFile::setString(string sName, string pName, string element) {
-    file[sName][pName] = element
+    file[sName][pName] = element;
 }
 
 string IniFile::getString(string sName, string pName) {
     return file[sName][pName];
 }
 
-string IniFile::getParameter(string sName, string pName) {
-    return file[sName][pName];
+bool IniFile::deleteSection(string sName) {
+    auto it = file.find(sName);
+    if(it != file.end())
+        file.erase(sName);
+    else
+        throw std::runtime_error("Sezione inesistente");
+
 }
 
-bool IniFile::deleteSection(string sName) {
+bool IniFile::deleteParameter(string sName, string pName) {
+    auto it = file[sName].find(pName);
+    if( it != file[sName].end())
+        file[sName].erase(pName);
+    else
+        throw std::runtime_error("Parametro inesistente");
+}
+void IniFile::printString(string sName, string pName) {
+    std::cout << file[sName][pName] << std::endl;
+}
 
+void IniFile::printSection(string sName) {
+    for(auto &it:file)
+        std::cout << it.first << std::endl;
+}
+
+void IniFile::printParameter(string sName, string pName) {
+    std::cout << file[sName][pName] << std::endl;
 }

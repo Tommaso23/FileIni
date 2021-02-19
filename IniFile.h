@@ -7,6 +7,7 @@
 
 #include "string"
 #include "map"
+#include "iostream"
 
 using namespace std;
 
@@ -18,8 +19,8 @@ public:
     void setFileName(string fileName);
     string getFileName();
 
-    bool addSection(string sName);
-    bool addParameter(string sName, string pName);
+    bool addSection(string sName); //add section
+    bool addParameter(string sName, string pName); //add parameter
 
     void setString(string sName, string pName, string element);
     string getString(string sName, string pName);
@@ -27,8 +28,14 @@ public:
     string getSection(string sName);
     string getParameter(string sName, string pName);
 
-    bool deleteSection(string sName);
-    bool deleteParameter(string sName, string pName);
+    bool deleteSection(string sName); //delete section
+    bool deleteParameter(string sName, string pName); //delete parameter
+
+    void printString(string sName, string pName);
+    void printSection(string sName);
+    void printParameter(string sName, string pName);
+
+
 
 
 
