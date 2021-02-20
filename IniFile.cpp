@@ -28,7 +28,7 @@ bool IniFile::addSection(string sName) {
 }
 
 bool IniFile::addParameter(string sName, string pName) {
-    file[sName][pName] = "vuoto";
+    file[sName][pName] = " ";
     if(&(file[sName][pName]) != nullptr)
         return true;
     else
@@ -93,4 +93,6 @@ bool IniFile::searchParameter(string sName, string pName) {
 void IniFile::clearFile() {
     file.clear();
 }
-
+void IniFile::clearString(string sName, string pName) {
+    file[sName][pName] = " ";
+}

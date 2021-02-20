@@ -30,6 +30,7 @@ public:
 
     bool deleteSection(string sName); //delete section
     bool deleteParameter(string sName, string pName); //delete parameter
+    void clearString(string sName, string pName);
 
     void printString(string sName, string pName);
     void printSection(string sName);
@@ -37,6 +38,9 @@ public:
     void printIniFile();
 
     void clearFile();
+
+    void addComment(string sName, string pName, string comment);
+    void getComment(string sName, string pName);
 
 
 
