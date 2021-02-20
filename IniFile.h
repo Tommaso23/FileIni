@@ -25,8 +25,8 @@ public:
     void setString(string sName, string pName, string element);
     string getString(string sName, string pName);
 
-    string getSection(string sName);
-    string getParameter(string sName, string pName);
+    bool searchSection(string sName);
+    bool searchParameter(string sName, string pName);
 
     bool deleteSection(string sName); //delete section
     bool deleteParameter(string sName, string pName); //delete parameter
