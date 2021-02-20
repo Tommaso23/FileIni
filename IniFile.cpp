@@ -69,6 +69,8 @@ void IniFile::printSection(string sName) {
         std::cout << it.first << std::endl;
 }
 
-void IniFile::printParameter(string sName, string pName) {
-    std::cout << file[sName][pName] << std::endl;
+void IniFile::printParameter(string sName) {
+    for(auto &it:file[sName])
+        std::cout << it.first << std::endl;
 }
+

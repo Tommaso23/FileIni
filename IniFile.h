@@ -33,7 +33,7 @@ public:
 
     void printString(string sName, string pName);
     void printSection(string sName);
-    void printParameter(string sName, string pName);
+    void printParameter(string sName);
 
 
 
