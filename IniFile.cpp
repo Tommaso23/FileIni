@@ -89,3 +89,8 @@ bool IniFile::searchParameter(string sName, string pName) {
         search = true;
     return search;
 }
+
+void IniFile::clearFile() {
+    file.clear();
+}
+

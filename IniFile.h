@@ -34,6 +34,10 @@ public:
     void printString(string sName, string pName);
     void printSection(string sName);
     void printParameter(string sName);
+    void printIniFile();
+
+    void clearFile();
+
 
 
 
@@ -52,6 +56,7 @@ public:
 private:
     string fileName;
     map<string, map<string, string>> file;
+    string comment;
 
 
 
