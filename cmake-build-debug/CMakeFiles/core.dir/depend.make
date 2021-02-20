@@ -4,5 +4,6 @@
 CMakeFiles/core.dir/IniFile.cpp.o: ../IniFile.cpp
 CMakeFiles/core.dir/IniFile.cpp.o: ../IniFile.h
 
+CMakeFiles/core.dir/main.cpp.o: ../IniFile.h
 CMakeFiles/core.dir/main.cpp.o: ../main.cpp
 

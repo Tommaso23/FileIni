@@ -61,12 +61,12 @@ bool IniFile::deleteParameter(string sName, string pName) {
         throw std::runtime_error("Parametro inesistente");
 }
 void IniFile::printString(string sName, string pName) {
-    std::cout << file[sName][pName] << std::endl;
+    std::cout << pName << " = " << file[sName][pName] << std::endl;
 }
 
 void IniFile::printSection(string sName) {
     for(auto &it:file)
-        std::cout << it.first << std::endl;
+        std::cout << "[" << it.first << "]" << std::endl;
 }
 
 void IniFile::printParameter(string sName) {
@@ -98,5 +98,6 @@ void IniFile::clearString(string sName, string pName) {
 }
 
 void IniFile::addComment(string sName, string pName, string comment) {
-    file[sName][pName] = "commento: "+  comment;
- }
+    file[sName][pName] = ";"+  comment;
+}
+
