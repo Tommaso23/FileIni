@@ -96,3 +96,7 @@ void IniFile::clearFile() {
 void IniFile::clearString(string sName, string pName) {
     file[sName][pName] = " ";
 }
+
+void IniFile::addComment(string sName, string pName, string comment) {
+    file[sName][pName] = "commento: "+  comment;
+ }
