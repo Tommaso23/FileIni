@@ -40,9 +40,22 @@ void IniFile::setString(string sName, string pName, string element) {
     file[sName][pName] = element;
 }
 
-string IniFile::getString(string sName, string pName) {
-    return file[sName][pName];
+
+void IniFile::setInt(string sName, string pName, int element) {
+    string e = to_string(element);
+    setString(sName, pName, e);
 }
+
+void IniFile::setFloat(string sName, string pName, float element) {
+    string e = to_string(element);
+    setString(sName, pName, e);
+}
+
+void IniFile::setBool(string sName, string pNAme, bool element) {
+    string e = to_string(element);
+    setString(sName, pNAme, e);
+}
+
 
 bool IniFile::deleteSection(string sName) {
     auto it = file.find(sName);
