@@ -24,6 +24,10 @@ public:
 
     void setString(string sName, string pName, string element);
     string getString(string sName, string pName);
+    void setInt(string sName, string pName, int element);
+    int getInt(string sName, string pName);
+    void setFloat(string sName, string pName, float element);
+    float getFloat(string sName, string pName);
 
     bool searchSection(string sName);
     bool searchParameter(string sName, string pName);
