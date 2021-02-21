@@ -23,12 +23,10 @@ public:
     bool addParameter(string sName, string pName); //add parameter
 
     void setString(string sName, string pName, string element);
-    string getString(string sName, string pName);
     void setInt(string sName, string pName, int element);
     void setFloat(string sName, string pName, float element);
-    float getFloat(string sName, string pName);
     void setBool(string sName, string pNAme, bool element);
-    bool getBool(string sName, string pName);
+
 
 
     bool searchSection(string sName);
