@@ -40,6 +40,9 @@ void IniFile::setString(string sName, string pName, string element) {
     file[sName][pName] = element;
 }
 
+string IniFile::getString(string sName, string pName) {
+    return file[sName][pName];
+}
 
 void IniFile::setInt(string sName, string pName, int element) {
     string e = to_string(element);
@@ -55,7 +58,6 @@ void IniFile::setBool(string sName, string pNAme, bool element) {
     string e = to_string(element);
     setString(sName, pNAme, e);
 }
-
 
 bool IniFile::deleteSection(string sName) {
     auto it = file.find(sName); //ritorna un iteratore all'elemento o a end()
@@ -112,15 +114,26 @@ void IniFile::clearString(string sName, string pName) {
 }
 
 void IniFile::addComment(string sName, string pName, string comment) {
-    file[sName][pName] = ";"+  comment;
+    if(sName == "onFile")
+        this->comment = comment;
+    else {
+        file[sName][pName] = ";" + comment;
+    }
 }
 
 void IniFile::printFile() {
     for(auto &it:file){
-        std::cout << it.first << std::endl;
+        std::cout << "[" << it.first << "]" << std::endl;
         for(auto &it2 : file[it.first]) {
             std::cout << it2.first << " =" << it2.second << std::endl;
         }
     }
 }
+
+void IniFile::changeString(string sNAme, string pName, string element) {
+    file[sNAme][pName].clear();
+    setString(sNAme, pName, element);
+}
+
+
 

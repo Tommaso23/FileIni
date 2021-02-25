@@ -27,6 +27,8 @@ public:
     void setFloat(string sName, string pName, float element);
     void setBool(string sName, string pNAme, bool element);
 
+    string getString(string sName, string pName);
+
     bool searchSection(string sName);
     bool searchParameter(string sName, string pName);
 
@@ -42,7 +44,8 @@ public:
     void clearFile();
 
     void addComment(string sName, string pName, string comment);
-    void getComment(string sName, string pName);
+
+    void changeString(string sNAme, string pName, string element);
 
 
 
@@ -62,6 +65,7 @@ public:
 private:
     string fileName;
     map<string, map<string, string>> file;
+    string comment;
 
 
 
