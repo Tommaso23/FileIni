@@ -114,8 +114,10 @@ void IniFile::clearString(string sName, string pName) {
 }
 
 void IniFile::addComment(string sName, string pName, string comment) {
-    if(sName == "onFile")
+    if(sName == "onFile") {
         this->comment = comment;
+        comm = true;
+    }
     else {
         file[sName][pName] = ";" + comment;
     }
@@ -123,9 +125,14 @@ void IniFile::addComment(string sName, string pName, string comment) {
 
 void IniFile::printFile() {
     for(auto &it:file){
-        std::cout << "[" << it.first << "]" << std::endl;
-        for(auto &it2 : file[it.first]) {
-            std::cout << it2.first << " =" << it2.second << std::endl;
+        if(comm){
+            std::cout << comment << std::endl;
+        }
+        else {
+            std::cout << "[" << it.first << "]" << std::endl;
+            for (auto &it2 : file[it.first]) {
+                std::cout << it2.first << " =" << it2.second << std::endl;
+            }
         }
     }
 }

@@ -66,6 +66,7 @@ private:
     string fileName;
     map<string, map<string, string>> file;
     string comment;
+    bool comm;
 
 
 
