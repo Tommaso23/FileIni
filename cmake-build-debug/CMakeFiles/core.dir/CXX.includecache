@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/tommasobucaioni/CLionProject/Laboratorio/IniFile.cpp
+IniFile.h
+/Users/tommasobucaioni/CLionProject/Laboratorio/IniFile.h
+
 /Users/tommasobucaioni/CLionProject/Laboratorio/IniFile.h
 string
 /Users/tommasobucaioni/CLionProject/Laboratorio/string
@@ -15,10 +19,4 @@ iostream
 /Users/tommasobucaioni/CLionProject/Laboratorio/iostream
 fstream
 /Users/tommasobucaioni/CLionProject/Laboratorio/fstream
-
-/Users/tommasobucaioni/CLionProject/Laboratorio/main.cpp
-iostream
--
-IniFile.h
-/Users/tommasobucaioni/CLionProject/Laboratorio/IniFile.h
 

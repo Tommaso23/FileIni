@@ -97,16 +97,27 @@ void IniFile::printString(string sName, string pName) {
 bool IniFile::searchSection(string sName) {
     bool search = false;
     auto it = file.find(sName);
-    if(it != file.end())
+    if(it != file.end()) {
         search = true;
+        std::cout << "Sezione: " << "[" << sName << "]" << " TROVATA" << std::endl;
+    }
+    else{
+        throw std::runtime_error("Sezione non presente");
+    }
     return search;
 }
 
 bool IniFile::searchParameter(string sName, string pName) {
     bool search = false;
     auto it = file[sName].find(pName);
-    if(it != file[sName].end())
+    if(it != file[sName].end()) {
         search = true;
+        std::cout << "Sezione: "<< "[" << sName << "]" << std::endl;
+        std::cout << "Parametro: " << pName << " TROVATO" <<std::endl;
+    }
+    else{
+        throw std::runtime_error("Parametro non presente");
+    }
     return search;
 }
 
