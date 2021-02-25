@@ -21,7 +21,7 @@ void IniFile::setFileName(string fileName) {
 
 bool IniFile::addSection(string sName) {
     file[sName];
-    if(&(file[sName]) != nullptr)
+    if(&(file[sName]) != nullptr) //indirizzo di file[name]diverso da nullptr
         return true;
     else
         return false;
@@ -58,7 +58,7 @@ void IniFile::setBool(string sName, string pNAme, bool element) {
 
 
 bool IniFile::deleteSection(string sName) {
-    auto it = file.find(sName);
+    auto it = file.find(sName); //ritorna un iteratore all'elemento o a end()
     if(it != file.end())
         file.erase(sName);
     else
@@ -73,9 +73,6 @@ bool IniFile::deleteParameter(string sName, string pName) {
     else
         throw std::runtime_error("Parametro inesistente");
 }
-void IniFile::printString(string sName, string pName) {
-    std::cout << pName << " = " << file[sName][pName] << std::endl;
-}
 
 void IniFile::printSection(string sName) {
     for(auto &it:file)
@@ -85,6 +82,10 @@ void IniFile::printSection(string sName) {
 void IniFile::printParameter(string sName) {
     for(auto &it:file[sName])
         std::cout << it.first << std::endl;
+}
+
+void IniFile::printString(string sName, string pName) {
+    std::cout << pName << " = " << file[sName][pName] << std::endl;
 }
 
 bool IniFile::searchSection(string sName) {
@@ -112,5 +113,13 @@ void IniFile::clearString(string sName, string pName) {
 
 void IniFile::addComment(string sName, string pName, string comment) {
     file[sName][pName] = ";"+  comment;
+}
+
+void IniFile::printFile() {
+    for(auto &it:file){
+        for(auto &it2 : file[it.first]) {
+            std::cout << it2.second << std::endl;
+        }
+    }
 }
 

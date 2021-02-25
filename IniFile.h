@@ -27,8 +27,6 @@ public:
     void setFloat(string sName, string pName, float element);
     void setBool(string sName, string pNAme, bool element);
 
-
-
     bool searchSection(string sName);
     bool searchParameter(string sName, string pName);
 
@@ -39,7 +37,7 @@ public:
     void printString(string sName, string pName);
     void printSection(string sName);
     void printParameter(string sName);
-    void printIniFile();
+    void printFile();
 
     void clearFile();
 
