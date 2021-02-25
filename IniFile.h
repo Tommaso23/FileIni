@@ -44,6 +44,8 @@ public:
 
     void clearFile();
 
+    void end();
+
     void addComment(string sName, string pName, string comment);
 
     void changeString(string sNAme, string pName, string element);

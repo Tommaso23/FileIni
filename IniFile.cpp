@@ -119,7 +119,7 @@ void IniFile::clearString(string sName, string pName) {
 
 void IniFile::addComment(string sName, string pName, string comment) {
     if(sName == "onFile") {
-        this->comment = comment;
+        this->comment = ";" + comment;
         comm = true;
     }
     else {
@@ -129,21 +129,24 @@ void IniFile::addComment(string sName, string pName, string comment) {
 
 void IniFile::printFile() {
     for(auto &it:file){
-        if(comm){
+        if(comm) {
             std::cout << comment << std::endl;
         }
-        else {
-            std::cout << "[" << it.first << "]" << std::endl;
-            for (auto &it2 : file[it.first]) {
-                std::cout << it2.first << " =" << it2.second << std::endl;
-            }
+        std::cout << "[" << it.first << "]" << std::endl;
+        for (auto &it2 : file[it.first]) {
+            std::cout << it2.first << " = " << it2.second << std::endl;
         }
     }
 }
 
+
 void IniFile::changeString(string sNAme, string pName, string element) {
     file[sNAme][pName].clear();
     setString(sNAme, pName, element);
+}
+
+void IniFile::end() {
+    projectFile.close();
 }
 
 
