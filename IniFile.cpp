@@ -7,6 +7,10 @@ using namespace std;
 
 IniFile::IniFile(string fileName) {
     this->fileName = fileName;
+    comment = "inserisci qui i commenti";
+    comm = false;
+    this->projectFile.open(fileName);
+
 }
 
 IniFile::~IniFile() {}

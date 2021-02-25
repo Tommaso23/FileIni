@@ -8,6 +8,7 @@
 #include "string"
 #include "map"
 #include "iostream"
+#include "fstream"
 
 using namespace std;
 
@@ -67,9 +68,7 @@ private:
     map<string, map<string, string>> file;
     string comment;
     bool comm;
-
-
-
+    fstream projectFile;
 
 };
 
