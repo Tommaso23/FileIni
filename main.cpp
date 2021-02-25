@@ -6,11 +6,7 @@ int main() {
 
     file.setString("Sezione 1", "Parametro 1", " ciao ");
     file.addParameter("Sezione 1", "Parametro 2");
-    file.printSection("Sezione 1");
-    file.printString("Sezione 1", "Parametro 1");
-    file.printString("Sezione 1", "Parametro 2");
-    file.addComment("Sezione 1", "Parametro 1", "commento");
-    file.printString("Sezione 1", "Parametro 1");
+    file.printFile();
 
 
 }

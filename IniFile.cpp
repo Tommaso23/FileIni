@@ -85,7 +85,7 @@ void IniFile::printParameter(string sName) {
 }
 
 void IniFile::printString(string sName, string pName) {
-    std::cout << pName << " = " << file[sName][pName] << std::endl;
+    std::cout << pName << " =" << file[sName][pName] << std::endl;
 }
 
 bool IniFile::searchSection(string sName) {
@@ -117,8 +117,9 @@ void IniFile::addComment(string sName, string pName, string comment) {
 
 void IniFile::printFile() {
     for(auto &it:file){
+        std::cout << it.first << std::endl;
         for(auto &it2 : file[it.first]) {
-            std::cout << it2.second << std::endl;
+            std::cout << it2.first << " =" << it2.second << std::endl;
         }
     }
 }
