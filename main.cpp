@@ -8,9 +8,5 @@ int main() {
     file.setString("Sezione 2", "Parametro 1", "NO");
     file.setString("Sezione 1", "Parametro 2", "avvio");
     file.addComment("onFile", "ciao", "tommaso");
-    //file.printParameters("Sezione 1");
-    //file.printSection("Sezione 1");
-    file.printFile();
-
 
 }

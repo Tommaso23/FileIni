@@ -142,11 +142,7 @@ void IniFile::printFile() {
         for(auto &it:file){
             printSection(it.first);
         }
-
-
-
 }
-
 
 void IniFile::changeString(string sNAme, string pName, string element) {
     file[sNAme][pName].clear();

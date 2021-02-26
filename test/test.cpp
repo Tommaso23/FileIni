@@ -13,3 +13,9 @@ TEST(IniFileTest, ConstructorTest) {
     ASSERT_EQ(constructorTester.getFileName(), "IniFile.ini");
 }
 
+TEST(IniFileTest, StringGetterSetterTest){
+    IniFile file("IniFile.ini");
+    file.setString("Sezione 1", "Parametro 1", "presente");
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), "presente");
+}
+

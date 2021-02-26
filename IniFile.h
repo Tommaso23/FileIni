@@ -37,7 +37,6 @@ public:
     bool deleteParameter(string sName, string pName); //delete parameter
     void clearString(string sName, string pName);
 
-    void printString(string sName, string pName);
     void printSection(string sName);
     void printParameters(string sName);
     void printFile();
