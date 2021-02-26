@@ -33,14 +33,27 @@ TEST(IniFileTest, addParameterTest){
     ASSERT_EQ(file.addParameter("Sezione 1", "Parametro 4"), true);
 }
 
-TEST(IniFileTest, searchSectionTestFail) {
+TEST(IniFileTest, searchSectionTest) {
     IniFile file("IniFile.ini");
     file.addSection("Sezione 4");
     EXPECT_THROW(file.searchSection("Sezione 9"), std::runtime_error);
 }
 
-TEST(IniFileTest, searchParameterTestFail) {
+TEST(IniFileTest, searchParameterTest) {
     IniFile file("IniFile.ini");
     file.addParameter("Sezione 2", "Parametro 6");
     EXPECT_THROW(file.searchParameter("Sezione 2", "Parametro 14"), std::runtime_error);
 }
+
+TEST(IniFileTest, deleteSectionTest) {
+    IniFile file("IniFile.ini");
+    file.addSection("Sezione 6");
+    EXPECT_THROW(file.deleteSection("Sezione 9"), std::runtime_error);
+}
+
+TEST(IniFileTest, deleteParameterTest) {
+    IniFile file("IniFile.ini");
+    file.addParameter("Sezione 3", "Parametro 5");
+    EXPECT_THROW(file.deleteParameter("Sezione 3", "Parametro 23"), std::runtime_error);
+}
+
