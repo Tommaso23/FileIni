@@ -18,9 +18,11 @@ IniFile::~IniFile() {}
 string IniFile::getFileName() {
     return this->fileName;
 }
+
 string IniFile::getComment() {
     return this->comment;
 }
+
 void IniFile::setFileName(string fileName) {
     this->fileName = fileName;
 }
@@ -61,8 +63,10 @@ void IniFile::setFloat(string sName, string pName, float element) {
 }
 
 void IniFile::setBool(string sName, string pNAme, bool element) {
-    string e = to_string(element);
-    setString(sName, pNAme, e);
+    if(element){
+        setString(sName, pNAme, "true");
+    } else
+        setString(sName, pNAme, "false");
 }
 
 void IniFile::deleteSection(string sName) {

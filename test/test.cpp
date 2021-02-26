@@ -19,6 +19,27 @@ TEST(IniFileTest, StringGetterSetterTest){
     ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), "presente");
 }
 
+TEST(IniFileTest, IntGetterSetterTest){
+    IniFile file("IniFile.ini");
+    file.setInt("Sezione 1", "Parametro 1", 5);
+    ASSERT_EQ(stoi(file.getString("Sezione 1", "Parametro 1")), 5);
+}
+
+TEST(IniFileTest, FloatGetterSetterTest){
+    IniFile file("IniFile.ini");
+    file.setFloat("Sezione 1", "Parametro 1", 3.23);
+    ASSERT_TRUE(abs(stof(file.getString("Sezione 1", "Parametro 1")) - 3.23 < 0.0001));
+}
+
+TEST(IniFileTest, BoolGetterSetterTest){
+    IniFile file("IniFile.ini");
+    file.setBool("Sezione 1", "Parametro 1", true);
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), "true");
+}
+
+
+
+
 TEST(IniFileTest, clearStringTest) {
     IniFile file("IniFile.ini");
     file.setString("Sezione 5", "Parametro 5", "ciao");
@@ -92,11 +113,12 @@ TEST(IniFileTest, deleteCommentTest) {
     ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), " ");
 }
 
-TEST(IniFileTest, addCommentTest) {
+TEST(IniFileTest, addCommentonFileTest) {
     IniFile file("IniFile.ini");
-    file.addComment("Sezione 1", "Parametro 1", "commento");
-    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), ";commento");
+    file.addComment("onFile", "Parametro 1", "commento");
+    ASSERT_EQ(file.getComment(), ";commento");
 }
+
 
 
 
