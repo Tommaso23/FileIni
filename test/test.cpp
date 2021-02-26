@@ -37,9 +37,6 @@ TEST(IniFileTest, BoolGetterSetterTest){
     ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), "true");
 }
 
-
-
-
 TEST(IniFileTest, clearStringTest) {
     IniFile file("IniFile.ini");
     file.setString("Sezione 5", "Parametro 5", "ciao");
@@ -118,8 +115,6 @@ TEST(IniFileTest, addCommentonFileTest) {
     file.addComment("onFile", "Parametro 1", "commento");
     ASSERT_EQ(file.getComment(), ";commento");
 }
-
-
 
 
 

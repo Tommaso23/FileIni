@@ -123,6 +123,8 @@ void IniFile::searchParameter(string sName, string pName) {
 
 void IniFile::clearFile() {
     file.clear();
+    comment = " ";
+    comm = false;
 }
 
 void IniFile::clearString(string sName, string pName) {
