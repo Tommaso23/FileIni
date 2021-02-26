@@ -82,20 +82,13 @@ bool IniFile::deleteParameter(string sName, string pName) {
 
 void IniFile::printSection(string sName) {
     std::cout << "[" << sName << "]" << std::endl;
-    for(auto &it:file[sName]) {
-        printParameters(sName);
-
-    }
+    printParameters(sName);
 }
 
 void IniFile::printParameters(string sName) {
-    for(auto &it:file[sName])
-        std::cout << file[sName][it.first] << std::endl;
-
-}
-
-void IniFile::printString(string sName, string pName) {
-    std::cout << pName << " =" << file[sName][pName] << std::endl;
+    for(auto &it:file[sName]) {
+        std::cout << it.first << " = " << file[sName][it.first] << std::endl;
+    }
 }
 
 bool IniFile::searchSection(string sName) {
