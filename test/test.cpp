@@ -12,3 +12,4 @@ TEST(IniFileTest, ConstructorTest) {
     IniFile constructorTester("IniFile.ini");
     ASSERT_EQ(constructorTester.getFileName(), "IniFile.ini");
 }
+
