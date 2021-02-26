@@ -20,6 +20,8 @@ public:
     void setFileName(string fileName);
     string getFileName();
 
+    string getComment();
+
     bool addSection(string sName); //add section
     bool addParameter(string sName, string pName); //add parameter
 

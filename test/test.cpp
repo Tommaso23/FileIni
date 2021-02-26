@@ -81,8 +81,23 @@ TEST(IniFileTest, addCommentTest) {
 TEST(IniFileTest, changeCommentTest) {
     IniFile file("IniFile.ini");
     file.addComment("Sezione 1", "Parametro 1", "commento");
-    file.
+    file.changeComment("Sezione 1", "Parametro 1", "ciao");
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), ";ciao");
+}
+
+TEST(IniFileTest, deleteCommentTest) {
+    IniFile file("IniFile.ini");
+    file.addComment("Sezione 1", "Parametro 1", "commento");
+    file.deleteComment("Sezione 1", "Parametro 1");
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), " ");
+}
+
+TEST(IniFileTest, addCommentTest) {
+    IniFile file("IniFile.ini");
+    file.addComment("Sezione 1", "Parametro 1", "commento");
     ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), ";commento");
 }
+
+
 
 

@@ -18,7 +18,9 @@ IniFile::~IniFile() {}
 string IniFile::getFileName() {
     return this->fileName;
 }
-
+string IniFile::getComment() {
+    return this->comment;
+}
 void IniFile::setFileName(string fileName) {
     this->fileName = fileName;
 }
@@ -138,7 +140,7 @@ void IniFile::deleteComment(string sName, string pName) {
         this->comment = "";
         comm = false;
     } else {
-        file[sName][pName] = "";
+        file[sName][pName] = " ";
     }
 }
 
