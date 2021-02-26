@@ -46,6 +46,8 @@ public:
     void end();
 
     void addComment(string sName, string pName, string comment);
+    void deleteComment(string sName, string pName);
+    void changeComment(string sName, string pName, string comment);
 
     void changeString(string sNAme, string pName, string element);
 

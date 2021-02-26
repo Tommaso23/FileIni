@@ -71,3 +71,18 @@ TEST(IniFileTest, deleteParameterTestFail) {
     EXPECT_THROW(file.deleteParameter("Sezione 3", "Parametro 23"), std::runtime_error);
 }
 
+//COMMENT GETTER E SETTER TESTER
+TEST(IniFileTest, addCommentTest) {
+    IniFile file("IniFile.ini");
+    file.addComment("Sezione 1", "Parametro 1", "commento");
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), ";commento");
+}
+
+TEST(IniFileTest, changeCommentTest) {
+    IniFile file("IniFile.ini");
+    file.addComment("Sezione 1", "Parametro 1", "commento");
+    file.
+    ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), ";commento");
+}
+
+

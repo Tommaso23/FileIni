@@ -133,6 +133,20 @@ void IniFile::addComment(string sName, string pName, string comment) {
     }
 }
 
+void IniFile::deleteComment(string sName, string pName) {
+    if(sName == "onFile"){
+        this->comment = "";
+        comm = false;
+    } else {
+        file[sName][pName] = "";
+    }
+}
+
+void IniFile::changeComment(string sName, string pName, string comment) {
+    deleteComment(sName, pName);
+    addComment(sName, pName, comment);
+}
+
 void IniFile::printFile() {
         if(comm) {
             std::cout << comment << std::endl;
