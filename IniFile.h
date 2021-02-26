@@ -30,7 +30,7 @@ public:
 
     string getString(string sName, string pName);
 
-    bool searchSection(string sName);
+    void searchSection(string sName);
     bool searchParameter(string sName, string pName);
 
     bool deleteSection(string sName); //delete section

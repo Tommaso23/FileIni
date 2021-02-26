@@ -64,12 +64,16 @@ void IniFile::setBool(string sName, string pNAme, bool element) {
 }
 
 bool IniFile::deleteSection(string sName) {
+    bool b;
     auto it = file.find(sName); //ritorna un iteratore all'elemento o a end()
-    if(it != file.end())
+    if(it != file.end()) {
         file.erase(sName);
-    else
+        b = true;
+    }
+    else {
         throw std::runtime_error("Sezione inesistente");
-
+    }
+    return b;
 }
 
 bool IniFile::deleteParameter(string sName, string pName) {
@@ -91,21 +95,18 @@ void IniFile::printParameters(string sName) {
     }
 }
 
-bool IniFile::searchSection(string sName) {
-    bool search = false;
+void IniFile::searchSection(string sName) {
     auto it = file.find(sName);
     if(it != file.end()) {
-        search = true;
         std::cout << "Sezione: " << "[" << sName << "]" << " TROVATA" << std::endl;
     }
     else{
         throw std::runtime_error("Sezione non presente");
     }
-    return search;
 }
 
 bool IniFile::searchParameter(string sName, string pName) {
-    bool search = false;
+    bool search = true;
     auto it = file[sName].find(pName);
     if(it != file[sName].end()) {
         search = true;
