@@ -139,6 +139,9 @@ void IniFile::printFile() {
         if(comm) {
             std::cout << comment << std::endl;
         }
+        for(auto &it:file){
+            printSection(it.first);
+        }
 
 
 
