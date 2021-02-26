@@ -19,6 +19,8 @@ TEST(IniFileTest, StringGetterSetterTest){
     ASSERT_EQ(file.getString("Sezione 1", "Parametro 1"), "presente");
 }
 
+
+//SECTIONS E PARAMETERS TESTER
 TEST(IniFileTest, addSectionTest) {
     IniFile file("IniFile.ini");
     file.addSection("Sezione 2");
@@ -35,4 +37,10 @@ TEST(IniFileTest, searchSectionTestFail) {
     IniFile file("IniFile.ini");
     file.addSection("Sezione 4");
     EXPECT_THROW(file.searchSection("Sezione 9"), std::runtime_error);
+}
+
+TEST(IniFileTest, searchParameterTestFail) {
+    IniFile file("IniFile.ini");
+    file.addParameter("Sezione 2", "Parametro 6");
+    EXPECT_THROW(file.searchParameter("Sezione 2", "Parametro 14"), std::runtime_error);
 }

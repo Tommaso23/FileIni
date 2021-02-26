@@ -31,10 +31,10 @@ public:
     string getString(string sName, string pName);
 
     void searchSection(string sName);
-    bool searchParameter(string sName, string pName);
+    void searchParameter(string sName, string pName);
 
-    bool deleteSection(string sName); //delete section
-    bool deleteParameter(string sName, string pName); //delete parameter
+    void deleteSection(string sName); //delete section
+    void deleteParameter(string sName, string pName); //delete parameter
     void clearString(string sName, string pName);
 
     void printSection(string sName);
