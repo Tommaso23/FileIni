@@ -28,15 +28,15 @@ public:
     void setString(string sName, string pName, string element);
     void setInt(string sName, string pName, int element);
     void setFloat(string sName, string pName, float element);
-    void setBool(string sName, string pNAme, bool element);
+    void setBool(string sName, string pName, bool element);
 
     string getString(string sName, string pName);
 
-    void searchSection(string sName);
-    void searchParameter(string sName, string pName);
+    bool searchSection(string sName);
+    bool searchParameter(string sName, string pName);
 
-    void deleteSection(string sName); //delete section
-    void deleteParameter(string sName, string pName); //delete parameter
+    bool deleteSection(string sName); //delete section
+    bool deleteParameter(string sName, string pName); //delete parameter
     void clearString(string sName, string pName);
 
     void printSection(string sName);
@@ -45,6 +45,7 @@ public:
 
     void clearFile();
 
+    void checkIsOpen() throw(std::runtime_error);
     void end();
 
     void addComment(string sName, string pName, string comment);
@@ -53,20 +54,7 @@ public:
 
     void changeString(string sNAme, string pName, string element);
 
-
-
-
-
-
-
-
     virtual ~IniFile(); //distruttore
-
-
-
-
-
-
 
 private:
     string fileName;

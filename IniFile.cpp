@@ -3,6 +3,7 @@
 //
 
 #include "IniFile.h"
+#include "iostream"
 using namespace std;
 
 IniFile::IniFile(string fileName) {
@@ -13,7 +14,9 @@ IniFile::IniFile(string fileName) {
 
 }
 
-IniFile::~IniFile() {}
+IniFile::~IniFile() {
+    this->projectFile.close();
+}
 
 string IniFile::getFileName() {
     return this->fileName;
@@ -69,11 +72,11 @@ void IniFile::setBool(string sName, string pNAme, bool element) {
         setString(sName, pNAme, "false");
 }
 
-void IniFile::deleteSection(string sName) {
+bool IniFile::deleteSection(string sName) {
     auto it = file.find(sName); //ritorna un iteratore all'elemento o a end()
     if(it != file.end()) {
         file.erase(sName);
-
+        return true;
     }
     else {
         throw std::runtime_error("Sezione inesistente");
@@ -81,10 +84,12 @@ void IniFile::deleteSection(string sName) {
 
 }
 
-void IniFile::deleteParameter(string sName, string pName) {
+bool IniFile::deleteParameter(string sName, string pName) {
     auto it = file[sName].find(pName);
-    if( it != file[sName].end())
+    if( it != file[sName].end()) {
         file[sName].erase(pName);
+        return true;
+    }
     else
         throw std::runtime_error("Parametro inesistente");
 }
@@ -100,21 +105,23 @@ void IniFile::printParameters(string sName) {
     }
 }
 
-void IniFile::searchSection(string sName) {
+bool IniFile::searchSection(string sName) {
     auto it = file.find(sName);
     if(it != file.end()) {
         std::cout << "Sezione: " << "[" << sName << "]" << " TROVATA" << std::endl;
+        return true;
     }
     else{
         throw std::runtime_error("Sezione non presente");
     }
 }
 
-void IniFile::searchParameter(string sName, string pName) {
+bool IniFile::searchParameter(string sName, string pName) {
     auto it = file[sName].find(pName);
     if(it != file[sName].end()) {
         std::cout << "Sezione: "<< "[" << sName << "]" << std::endl;
         std::cout << "Parametro: " << pName << " TROVATO" <<std::endl;
+        return true;
     }
     else{
         throw std::runtime_error("Parametro non presente");
@@ -169,9 +176,15 @@ void IniFile::changeString(string sNAme, string pName, string element) {
     setString(sNAme, pName, element);
 }
 
-void IniFile::end() {
-    projectFile.close();
+void IniFile::checkIsOpen() throw(std::runtime_error) {
+    if(!projectFile.is_open())
+        throw std::runtime_error("File inesistente");
 }
+
+void IniFile::end() {
+    this->projectFile.close();
+}
+
 
 
 

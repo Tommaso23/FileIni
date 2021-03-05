@@ -71,10 +71,22 @@ TEST(IniFileTest, searchSectionTestFail) {
     EXPECT_THROW(file.searchSection("Sezione 9"), std::runtime_error);
 }
 
+TEST(IniFileTest, searchSectionTest) {
+    IniFile file("IniFile.ini");
+    file.addSection("Sezione 4");
+    ASSERT_EQ(file.searchSection("Sezione 4"), true);
+}
+
 TEST(IniFileTest, searchParameterTestFail) {
     IniFile file("IniFile.ini");
     file.addParameter("Sezione 2", "Parametro 6");
     EXPECT_THROW(file.searchParameter("Sezione 2", "Parametro 14"), std::runtime_error);
+}
+
+TEST(IniFileTest, searchParamaterTest) {
+    IniFile file("IniFile.ini");
+    file.addParameter("Sezione 2", "Parametro 4");
+    ASSERT_EQ(file.searchParameter("Sezione 2", "Parametro 4"), true);
 }
 
 TEST(IniFileTest, deleteSectionTestFail) {
@@ -83,10 +95,22 @@ TEST(IniFileTest, deleteSectionTestFail) {
     EXPECT_THROW(file.deleteSection("Sezione 9"), std::runtime_error);
 }
 
+TEST(IniFileTest, deleteSectionTest) {
+    IniFile file("IniFile.ini");
+    file.addSection("Sezione 6");
+    ASSERT_EQ(file.deleteSection("Sezione 6"), true);
+}
+
 TEST(IniFileTest, deleteParameterTestFail) {
     IniFile file("IniFile.ini");
     file.addParameter("Sezione 3", "Parametro 5");
     EXPECT_THROW(file.deleteParameter("Sezione 3", "Parametro 23"), std::runtime_error);
+}
+
+TEST(IniFileTest, deleteParameterTest) {
+    IniFile file("IniFile.ini");
+    file.addParameter("Sezione 6", "Parametro 5");
+    ASSERT_EQ(file.deleteParameter("Sezione 6", "Parametro 5"), true);
 }
 
 //COMMENT GETTER E SETTER TESTER
@@ -116,5 +140,9 @@ TEST(IniFileTest, addCommentonFileTest) {
     ASSERT_EQ(file.getComment(), ";commento");
 }
 
-
+TEST(IniFileTest, checkIsOpenTest){
+    IniFile file("Ciao.ini");
+    file.end();
+    EXPECT_THROW(file.checkIsOpen(), std::runtime_error);
+}
 
