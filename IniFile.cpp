@@ -4,13 +4,16 @@
 
 #include "IniFile.h"
 #include "iostream"
+#include <fstream>
+
 using namespace std;
 
 IniFile::IniFile(string fileName) {
+
     this->fileName = fileName;
     comment = "inserisci qui i commenti";
     comm = false;
-    this->projectFile.open(fileName);
+    this->projectFile.open(fileName, ios::out);
 
 }
 
@@ -65,11 +68,11 @@ void IniFile::setFloat(string sName, string pName, float element) {
     setString(sName, pName, e);
 }
 
-void IniFile::setBool(string sName, string pNAme, bool element) {
+void IniFile::setBool(string sName, string pName, bool element) {
     if(element){
-        setString(sName, pNAme, "true");
+        setString(sName, pName, "true");
     } else
-        setString(sName, pNAme, "false");
+        setString(sName, pName, "false");
 }
 
 bool IniFile::deleteSection(string sName) {
@@ -96,19 +99,21 @@ bool IniFile::deleteParameter(string sName, string pName) {
 
 void IniFile::printSection(string sName) {
     std::cout << "[" << sName << "]" << std::endl;
+    this->projectFile << "[" << sName << "]" << endl;
     printParameters(sName);
 }
 
 void IniFile::printParameters(string sName) {
     for(auto &it:file[sName]) {
         std::cout << it.first << " = " << file[sName][it.first] << std::endl;
+        this->projectFile << it.first << " = " << file[sName][it.first] << endl;
     }
 }
 
 bool IniFile::searchSection(string sName) {
     auto it = file.find(sName);
     if(it != file.end()) {
-        std::cout << "Sezione: " << "[" << sName << "]" << " TROVATA" << std::endl;
+        std::cout << "Sezione: " << "[" << sName << "]" << " trovata" << std::endl;
         return true;
     }
     else{
@@ -165,15 +170,16 @@ void IniFile::changeComment(string sName, string pName, string comment) {
 void IniFile::printFile() {
         if(comm) {
             std::cout << comment << std::endl;
+            this->projectFile << comment << endl;
         }
         for(auto &it:file){
             printSection(it.first);
         }
 }
 
-void IniFile::changeString(string sNAme, string pName, string element) {
-    file[sNAme][pName].clear();
-    setString(sNAme, pName, element);
+void IniFile::changeString(string sName, string pName, string element) {
+    file[sName][pName].clear();
+    setString(sName, pName, element);
 }
 
 void IniFile::checkIsOpen() throw(std::runtime_error) {
@@ -184,7 +190,6 @@ void IniFile::checkIsOpen() throw(std::runtime_error) {
 void IniFile::end() {
     this->projectFile.close();
 }
-
 
 
 

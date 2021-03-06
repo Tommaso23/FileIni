@@ -31,7 +31,6 @@ public:
     void setBool(string sName, string pName, bool element);
 
     string getString(string sName, string pName);
-
     bool searchSection(string sName);
     bool searchParameter(string sName, string pName);
 
@@ -53,7 +52,6 @@ public:
     void changeComment(string sName, string pName, string comment);
 
     void changeString(string sNAme, string pName, string element);
-
     virtual ~IniFile(); //distruttore
 
 private:
