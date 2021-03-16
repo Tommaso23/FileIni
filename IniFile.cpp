@@ -13,20 +13,20 @@ IniFile::IniFile(string fileName) {
     this->fileName = fileName;
     comment = "inserisci qui i commenti";
     comm = false;
-    this->projectFile.open(fileName, ios::out);
+    projectFile.open(fileName, ios::out);
 
 }
 
 IniFile::~IniFile() {
-    this->projectFile.close();
+    projectFile.close();
 }
 
 string IniFile::getFileName() {
-    return this->fileName;
+    return fileName;
 }
 
 string IniFile::getComment() {
-    return this->comment;
+    return comment;
 }
 
 void IniFile::setFileName(string fileName) {
@@ -99,21 +99,20 @@ bool IniFile::deleteParameter(string sName, string pName) {
 
 void IniFile::printSection(string sName) {
     std::cout << "[" << sName << "]" << std::endl;
-    this->projectFile << "[" << sName << "]" << endl;
+    projectFile << "[" << sName << "]" << endl;
     printParameters(sName);
 }
 
 void IniFile::printParameters(string sName) {
     for(auto &it:file[sName]) {
         std::cout << it.first << " = " << file[sName][it.first] << std::endl;
-        this->projectFile << it.first << " = " << file[sName][it.first] << endl;
+        projectFile << it.first << " = " << file[sName][it.first] << endl;
     }
 }
 
 bool IniFile::searchSection(string sName) {
     auto it = file.find(sName);
     if(it != file.end()) {
-        std::cout << "Sezione: " << "[" << sName << "]" << " trovata" << std::endl;
         return true;
     }
     else{
@@ -124,8 +123,6 @@ bool IniFile::searchSection(string sName) {
 bool IniFile::searchParameter(string sName, string pName) {
     auto it = file[sName].find(pName);
     if(it != file[sName].end()) {
-        std::cout << "Sezione: "<< "[" << sName << "]" << std::endl;
-        std::cout << "Parametro: " << pName << " TROVATO" <<std::endl;
         return true;
     }
     else{
@@ -155,7 +152,7 @@ void IniFile::addComment(string sName, string pName, string comment) {
 
 void IniFile::deleteComment(string sName, string pName) {
     if(sName == "onFile"){
-        this->comment = "";
+        comment = "";
         comm = false;
     } else {
         file[sName][pName] = " ";
@@ -170,7 +167,7 @@ void IniFile::changeComment(string sName, string pName, string comment) {
 void IniFile::printFile() {
         if(comm) {
             std::cout << comment << std::endl;
-            this->projectFile << comment << endl;
+            projectFile << comment << endl;
         }
         for(auto &it:file){
             printSection(it.first);
@@ -188,7 +185,7 @@ void IniFile::checkIsOpen() throw(std::runtime_error) {
 }
 
 void IniFile::end() {
-    this->projectFile.close();
+    projectFile.close();
 }
 
 
